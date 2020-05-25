@@ -1,0 +1,39 @@
+NOTE: forgetPassword:
+1. route - controller
+2. 3 steps:
+  + get user base on email ?
+  + create random reset token (un-en) + save it (en) into DB.
+  + send email
+3. buoc 2:
+  + neu muon luu 1 field vao db thi phai dinh nghia no trong Schema.
+  + khi sd .create(): 
+    User.create()
+    -> created + validated -> pre-save (update pw + pwC) -> saved.
+  + khi sd .save():
+    update thu cong | call method
+    await doc.save()
+    -> update thu cong -> validate  -> pre-save -> saved.
+
+NOTE: protect
+1. route - controller 
+2. 5 steps:
+  + has token ? headers + set environment variable in postman
+  + token valid ? error(2) + promisify
+  + user exist ?
+  + change pw after the token created ? pre-save w\ .isNew .isModified() -1000 + method
+  + grant access
+
+NOTE: resetPassword
+1. route - controller
+2. 3 steps: 
+  + get user base on token(un-en) and Date.now() ?
+  + update pw thu cong (pw pwC pwRT pwRE) ? pre-save
+  + send token
+
+NOTE: update password
+1. route - controller
+2. 4 steps:
+  + get user base on id: req.user.id
+  + check current password valid ? select: false
+  + update pw thu cong (pw pwC) ? pre-save 
+  + send token
