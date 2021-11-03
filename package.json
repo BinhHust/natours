@@ -29,7 +29,7 @@
     "pug": "^2.0.4",
     "sharp": "^0.25.3",
     "slugify": "^1.4.0",
-    "validator": "^13.0.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
